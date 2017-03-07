@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load urlify %}
+{%block content%}
+<h1>detail is working</h1>
+
+{{object.title}}<br>
+<img src="{{object.image.url}}" class="img-responsive">
+{{object.content}}<br>
+{{object.id}}<br>
+{{request.build_absolute_uri}}
+{{object.content|urlify}}
+<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
+Share on Facebook
+</a>
+<a href="https://twitter.com/home?status={{share_string}}%20{{request.build_absolute_uri}}">
+Share on Twitter
+</a>
+{%endblock content %}
