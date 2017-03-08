@@ -3,13 +3,20 @@
 {%block content%}
 
 <h1>index is working</h1>
+
 <div class="col-sm-8 ">
+	<div class="col-sm-8 col-sm-offset-2">
+	<form method='GET' action=''>
+<input type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
+<input type='submit' value='Search' />
+</form>
+</div>
 {%for obj in object_list %}
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-2">
 		<div class="thumbnail">
 		<div class="caption">
-<h2><a href="{{ obj.get_absolute_url }}">{{obj.title}}</a><small>{{obj.timestamp|timesince}}</small></h2>
+<h2><a href="{{ obj.get_absolute_url }}">{{obj.title}}</a><small>{{obj.publish|timesince}}</small></h2>
 <img src="{{obj.image.url}}" class="img-responsive">
 <h4>{{obj.content|linebreaks|truncatechars:120}}</h4>
 <a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">view</a>

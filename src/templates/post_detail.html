@@ -1,18 +1,24 @@
 {% extends "base.html" %}
-{% load urlify %}
+
 {%block content%}
+<div class="col-sm-8 col-sm-offset-3 ">
+	<div class="thumbnail">
 <h1>detail is working</h1>
 
-{{object.title}}<br>
-<img src="{{object.image.url}}" class="img-responsive">
-{{object.content}}<br>
-{{object.id}}<br>
-{{request.build_absolute_uri}}
-{{object.content|urlify}}
-<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
-Share on Facebook
-</a>
-<a href="https://twitter.com/home?status={{share_string}}%20{{request.build_absolute_uri}}">
-Share on Twitter
-</a>
+<p><h3>{{object.title}}</h3></p>
+
+<p><img src="{{object.image.url}}" class="img-responsive"></p>
+
+
+
+<p>{{object.content}}</p>
+<p>{{object.user}}
+	{% if object.draft %}<span style="color:red;">draft</span>{%endif%}
+	{{object.publish}}
+<div class="fb-like" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+
+</p>
+<div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5"></div>
+</div>
+</div>
 {%endblock content %}
