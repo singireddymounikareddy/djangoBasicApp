@@ -1,24 +1,29 @@
 {% extends "base.html" %}
-
 {%block content%}
-<div class="col-sm-8 col-sm-offset-3 ">
-	<div class="thumbnail">
-<h1>detail is working</h1>
-
-<p><h3>{{object.title}}</h3></p>
-
-<p><img src="{{object.image.url}}" class="img-responsive"></p>
+<div class="col-sm-8 col-sm-offset-2 ">
+	<div class="">
+		<div class="panel panel-info">
 
 
 
-<p>{{object.content}}</p>
-<p>{{object.user}}
+<div class="panel-heading">
+	<h3><p style="font-family:cursive;">post details</p></h3>
+<h4><span style="font-family:cursive;">{{object.title}}</span></a><small ><span style="font-family:cursive;margin-left: 35em" >{{object.publish|timesince}} &nbsp; ago</span></small></h4>
+</div >
+<div class="panel-body"><p><img src="{{object.image.url}}" class="img-responsive"></p>
+
+
+
+<p style="font-family:cursive;">{{object.content}}</p>
+<p>{{object.user}}&emsp; &emsp;
 	{% if object.draft %}<span style="color:red;">draft</span>{%endif%}
 	{{object.publish}}
 <div class="fb-like" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 
 </p>
 <div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5"></div>
+</div>
+</div>
 </div>
 </div>
 {%endblock content %}

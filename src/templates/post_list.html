@@ -2,30 +2,44 @@
 {% extends "base.html" %}
 {%block content%}
 
-<h1>index is working</h1>
+
 
 <div class="col-sm-8 ">
+    <h3 align="center" style="font-family:cursive;">posts list</h3>
+    <br>
+    <br>
 	<div class="col-sm-8 col-sm-offset-2">
 	<form method='GET' action=''>
 <input type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
-<input type='submit' value='Search' />
+<input type='submit' value='Search' class="btn btn-info" />
 </form>
 </div>
 {%for obj in object_list %}
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-2">
-		<div class="thumbnail">
+		
 		<div class="caption">
-<h2><a href="{{ obj.get_absolute_url }}">{{obj.title}}</a><small>{{obj.publish|timesince}}</small></h2>
+                <div class="panel panel-info">
+
+
+
+<div class="panel-heading">
+<h4><a href="{{ obj.get_absolute_url }}"><span style="font-family:cursive;">{{obj.title}}</span></a><small ><span style="font-family:cursive;margin-left: 35em" >{{obj.publish|timesince}}ago</span></small></h4>
+</div>
+<div class="panel-body">
 <img src="{{obj.image.url}}" class="img-responsive">
-<h4>{{obj.content|linebreaks|truncatechars:120}}</h4>
-<a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">view</a>
+<h4 style="font-family:cursive;">{{obj.content|linebreaks|truncatechars:120}}</h4>
+<a href="{{ obj.get_absolute_url }}" class="btn btn-info" role="button">view</a>
 </div>
 </div>
+</div>
+
+
 </div>
 </div>
 {% endfor %}<br>
-
+<div class="col-sm-12 col-sm-offset-2">
+<footer style="postion:fixed">
 <div class="pagination">
     <span class="step-links">
         {% if object_list.has_previous %}
@@ -40,6 +54,8 @@
             <a href="?page={{ object_list.next_page_number }}">next</a>
         {% endif %}
     </span>
+</div>
+</footer>
 </div>
 </div>
 {%endblock content %}

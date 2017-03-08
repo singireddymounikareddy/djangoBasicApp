@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {%block content%}
-<h1>index is working</h1>
-<form  method="POST" action="" enctype="multipart/form-data">{% csrf_token%}
+<div class="col-sm-8 col-sm-offset-3 ">
+	<div class="thumbnail">
+<h3>post form</h3>
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token%}
 {{form.as_p}}
-<input type="submit" value="create post">
+<input type="submit" value="create post" class="btn btn-info">
 </form>
+</div>
+</div>
 {%endblock content %}
